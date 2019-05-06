@@ -7,6 +7,10 @@ public class menu : MonoBehaviour
 {
     public void SetupAdventureMode()
     {
+        if(GameProgress.instance != null)
+        {
+            GameProgress.ResetGameProgress();
+        }
         GameProgress.gameMode = GameProgress.GameMode.ADVENTURE;
         SceneManager.LoadScene("Dungeon Generation");
     }

@@ -171,6 +171,15 @@ public class FriendlyAI : MonoBehaviour
     void IdleUpdate()
     {
 
+        // Did we get a target somehow?
+        if(myEntity.currentEnemy != null)
+        {
+            // We do, let's get him first.
+            myEntity.currentTarget = myEntity.currentEnemy;
+            currentState = IState.ATTACKING;
+            return;
+        }
+
         // OPTIONAL: Ocational moving?
 
         // First attack, then follow
@@ -183,6 +192,12 @@ public class FriendlyAI : MonoBehaviour
             return;
         }
         
+        if(myEntity == null)
+        {
+            // Target has died.
+            return;
+        }
+
         if (Vector3.Distance(myEntity.transform.position, playerEntity.transform.position) > followingDistance)
         {
             // Change to following state

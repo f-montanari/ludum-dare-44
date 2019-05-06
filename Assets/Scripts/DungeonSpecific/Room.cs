@@ -9,10 +9,37 @@ public class Room : MonoBehaviour
     public Transform EndPortalSpawn;
 
     private Dictionary<Transform, bool> UsedExitPoints;
+    private Dictionary<Transform, bool> UsedSpawnPoints;
 
     public Transform getRandomSpawnPoint()
     {
-        return spawnPoints[Random.Range(0, spawnPoints.Count - 1)];
+        if (UsedSpawnPoints == null)
+        {
+            UsedSpawnPoints = new Dictionary<Transform, bool>();
+            foreach (Transform spawnPoint in spawnPoints)
+            {
+                UsedSpawnPoints[spawnPoint] = false;
+            }
+        }
+        
+        // Find the first value that has no exitPoint.
+        foreach (KeyValuePair<Transform, bool> spawnPoint in UsedSpawnPoints)
+        {
+            // Does it already have an exit point?
+            // If so, just continue.
+            if (UsedSpawnPoints[spawnPoint.Key])
+            {
+                continue;
+            }
+            // Else, flag that it already has an exit, and return it.
+            else
+            {
+                UsedSpawnPoints[spawnPoint.Key] = true;
+                return spawnPoint.Key;
+            }
+        }
+        return null;
+        
     }
 
     public Transform GetExitPoint()

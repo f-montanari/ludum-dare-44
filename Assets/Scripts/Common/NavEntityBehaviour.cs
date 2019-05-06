@@ -49,6 +49,11 @@ public class NavEntityBehaviour : Entity
     IEnumerator processDeath()
     {
         
+        if(Health <= -35f)
+        {
+            Destroy(gameObject);
+        }
+
         animationHandler.Die();
         while(animationHandler.isDying())
         {

@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     public GameObject WinPanel;
     public GameObject LosePanel;
 
+
+    private List<NavEntityBehaviour> AliveSkeletons;
     private NavEntityBehaviour playerEntity;    
 
     // Start is called before the first frame update
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
     {                
         instance = this;                                
         instance.AvailableSkeletons = GameProgress.AvailableSkeletons;
+        instance.AliveSkeletons = new List<NavEntityBehaviour>();
     }
 
     public void PlayerDied()
@@ -53,6 +56,17 @@ public class GameManager : MonoBehaviour
         }        
     }
 
+    public void UpdateSkeletonTargets(Entity target)
+    {
+        foreach (NavEntityBehaviour skeleton in AliveSkeletons)
+        {
+            if(skeleton.currentEnemy == null)
+            {
+                skeleton.currentEnemy = target;
+            }
+        }
+    }
+
     public void SetupPlayer(GameObject player)
     {
         this.player = player;
@@ -63,7 +77,8 @@ public class GameManager : MonoBehaviour
     private void SummonSkeleton()
     {
         Vector3 spawnpoint = player.transform.position + new Vector3(spawnDistance * Mathf.Cos(UnityEngine.Random.Range(0, Mathf.PI / 2)), 0, spawnDistance * Mathf.Sin(UnityEngine.Random.Range(0, Mathf.PI / 2)));
-        Instantiate(SkeletonPrefab, spawnpoint, Quaternion.identity);
+        NavEntityBehaviour Skeleton = Instantiate(SkeletonPrefab, spawnpoint, Quaternion.identity).GetComponent<NavEntityBehaviour>();
+        AliveSkeletons.Add(Skeleton);
         instance.AvailableSkeletons--;
         playerEntity.TakeDamage(SkeletonLifeCost, null);
     }    

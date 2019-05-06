@@ -75,11 +75,18 @@ public class MouseManager : MonoBehaviour
 
     private void SpawnProjectile(Vector3 point)
     {
+        if(player == null)
+        {
+            // We're probably dead.
+            return;
+        }
+
         Vector3 spawnpoint = player.transform.position + (point - player.transform.position).normalized * 1f;
         Vector3 correctedSpawnpoint = new Vector3(spawnpoint.x, 1f, spawnpoint.z);
         Projectile fireball = Instantiate(fireballPrefab, correctedSpawnpoint, Quaternion.identity).GetComponent<Projectile>();
         fireball.baseDamage = player.baseDamage;
         fireball.speed = projectileSpeed;
+        fireball.owner = player;
         Vector3 direction = (point - player.transform.position).normalized;
         fireball.direction = new Vector3(direction.x,0,direction.z);
     }

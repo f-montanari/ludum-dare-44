@@ -66,7 +66,7 @@ public class CameraManager : MonoBehaviour
     }
 }
 
-/*
+#if UNITY_EDITOR
 [CustomEditor(typeof(CameraManager))]
 public class CameraEditor : Editor
 {
@@ -80,4 +80,4 @@ public class CameraEditor : Editor
         }
     }
 }
-*/
+#endif

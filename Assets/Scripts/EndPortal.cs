@@ -14,6 +14,10 @@ public class EndPortal : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(player == null)
+        {
+            return;
+        }
         if(Vector3.Distance(player.position, this.transform.position) < 1f)
         {
             // We've entered the portal.

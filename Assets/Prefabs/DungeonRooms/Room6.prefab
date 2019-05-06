@@ -156,36 +156,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.0000014, y: 5, z: 1.6608993}
   m_Center: {x: 0, y: 2.5, z: 0.0000005066396}
---- !u!1 &732493381681355082
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2540100830044725170}
-  m_Layer: 0
-  m_Name: EndPortalSpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2540100830044725170
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732493381681355082}
-  m_LocalRotation: {x: -0, y: -0.7071065, z: -0, w: 0.7071071}
-  m_LocalPosition: {x: 4.37, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5792902104396811610}
-  m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
 --- !u!65 &4185879181234310057
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -433,7 +403,7 @@ Transform:
   - {fileID: 4366804883390351129}
   - {fileID: 7689917060758463742}
   - {fileID: 962418485069552204}
-  - {fileID: 2540100830044725170}
+  - {fileID: 8111682516720004510}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -454,7 +424,7 @@ MonoBehaviour:
   - {fileID: 645515176253939846}
   spawnPoints:
   - {fileID: 962418485069552204}
-  EndPortalSpawn: {fileID: 2540100830044725170}
+  EndPortalSpawn: {fileID: 8111682516720004510}
 --- !u!65 &8716914673963111061
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -956,6 +926,36 @@ MonoBehaviour:
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &4669986405255958225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8111682516720004510}
+  m_Layer: 0
+  m_Name: EndPortalSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8111682516720004510
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4669986405255958225}
+  m_LocalRotation: {x: -0, y: -0.7071065, z: -0, w: 0.7071071}
+  m_LocalPosition: {x: 4.37, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5792902104396811610}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
 --- !u!65 &7269506265651499242
 BoxCollider:
   m_ObjectHideFlags: 0

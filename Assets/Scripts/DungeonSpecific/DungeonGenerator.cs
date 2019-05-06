@@ -27,7 +27,7 @@ public class DungeonGenerator : MonoBehaviour
     private Room startingRoom;
     private Room endingRoom;
     private GameObject playerEntity;
-
+    
     public void GenerateRooms()
     {
 
@@ -186,11 +186,20 @@ public class DungeonGenerator : MonoBehaviour
 
             // Spawn enemies
             for (int i = 0; i < MaxNumberOfEnemies; i++)
-            {                
-                Transform spawnpoint = instantiatedRooms[UnityEngine.Random.Range(1, instantiatedRooms.Count - 2)].getRandomSpawnPoint();
-                GameObject enemy = Instantiate(enemyPrefab, spawnpoint.position, spawnpoint.rotation);
-                instantiatedObjects.Add(enemy);
-
+            {
+                Transform spawnpoint = null;
+                int f = 0;
+                while(spawnpoint == null && f < 20)
+                {
+                    spawnpoint = instantiatedRooms[UnityEngine.Random.Range(1, instantiatedRooms.Count - 2)].getRandomSpawnPoint();
+                    f++;
+                }       
+                
+                if(spawnpoint != null)
+                {
+                    GameObject enemy = Instantiate(enemyPrefab, spawnpoint.position, spawnpoint.rotation);
+                    instantiatedObjects.Add(enemy);
+                }
             }
 
             // Spawn end portal
@@ -215,7 +224,8 @@ public class DungeonGenerator : MonoBehaviour
         manager.StartGame();
     }
 }
-/*
+
+#if UNITY_EDITOR
 [CustomEditor(typeof(DungeonGenerator))]
 public class DungeonGeneratorEditor : Editor
 {
@@ -229,4 +239,4 @@ public class DungeonGeneratorEditor : Editor
         }
     }
 }
-*/
+#endif
